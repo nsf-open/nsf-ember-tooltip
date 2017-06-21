@@ -23,6 +23,10 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['nsf-ember-tooltip'] = {
+    excludeDefaultStyles: true,
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
