@@ -1,0 +1,55 @@
+<h1 class="display-4 mt-4"><code>\{{tool-tip}}</code></h1>
+<p class="lead">Display interactive and customizable content tips. Powered by <a href="https://iamceege.github.io/tooltipster/" target="_blank">Tooltipster</a>.</p>
+<hr />
+
+<div class="row">
+    <div class="col-5">
+        <div class="card">
+            <div class="card-block">
+                {{tool-tip tooltipContent (concat tipTrigger ' to interact with this tooltip') enabled=enabled showTip=showTip showTipOnUpdate=true maxWidth=200 tipTrigger=tipTrigger}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-7">
+        <div class="card">
+            <div class="card-block">
+                <div class="row form-group">
+                    <label for="tipContent" class="col-3 col-form-label">Content</label>
+                    <div class=" col-9">
+                        {{textarea id='tipContent' value=inputContent class='form-control mb-1'}}
+                        <button class="btn btn-primary btn-block" onclick={{action 'updateTooltipContent'}}>Update Content</button>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="tipEnabled" class="col-3">Enabled</label>
+                    <div class="col-9">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                {{input id='tipEnabled' checked=enabled type='checkbox' class='form-check-input'}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="tipShowOnUpdate" class="col-3">Show on update</label>
+                    <div class="col-9">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                {{input id='tipShowOnUpdate' checked=showOnUpdate type='checkbox' class='form-check-input'}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-9 offset-3">
+                        <button class="btn btn-primary btn-block" onclick={{action 'toggleTipVisibility'}}>{{if showTip 'Force Hide' 'Force Show'}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
