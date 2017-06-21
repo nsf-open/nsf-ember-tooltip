@@ -1,5 +1,6 @@
 # nsf-ember-tooltip
 
+[![Build Status](https://travis-ci.org/nsf-open/nsf-ember-tooltip.svg?branch=master)](https://travis-ci.org/nsf-open/nsf-ember-tooltip)
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
