@@ -1,0 +1,194 @@
+/*
+  All credit to the Tooltipster crew (https://github.com/iamceege/tooltipster).
+  This is just a SASS-y version of the default theme.
+*/
+
+
+/* This is the core CSS of Tooltipster */
+@import 'mixins';
+
+.tooltipster-base {
+  /* this ensures that a constrained height set by functionPosition, if greater that the natural height
+  of the tooltip, will be enforced in browsers that support display:flex */
+  display:        flex;
+  pointer-events: none;
+  position:       absolute; /* this may be overriden in JS for fixed position origins */
+}
+
+.tooltipster-box {
+  /* see .tooltipster-base. flex-shrink 1 is only necessary for IE10- and flex-basis auto for IE11- (at least) */
+  flex: 1 1 auto;
+}
+
+.tooltipster-content {
+  box-sizing: border-box; /* prevents an overflow if the user adds padding to the div */
+  /* these make sure we'll be able to detect any overflow */
+  max-height: 100%;
+  max-width:  100%;
+  overflow:   auto;
+}
+
+.tooltipster-ruler {
+  /* these let us test the size of the tooltip without overflowing the window */
+  bottom:     0;
+  left:       0;
+  overflow:   hidden;
+  position:   fixed;
+  right:      0;
+  top:        0;
+  visibility: hidden;
+}
+
+/* ANIMATIONS */
+
+/* Open/close animations */
+
+/* fade */
+.tooltipster-fade {
+  opacity: 0;
+  @include __style-prefixer('transition-property', 'opacity');
+
+  &.tooltipster-show {
+    opacity: 1;
+  }
+}
+
+
+/* grow */
+.tooltipster-grow {
+  @include __style-prefixer('transform', scale(0, 0));
+  @include __style-prefixer('transition-property', 'transform', true);
+  -webkit-backface-visibility: hidden;
+
+  &.tooltipster-show {
+    @include __style-prefixer('transform', scale(1, 1));
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    @include __style-prefixer('transition-timing-function', cubic-bezier(0.175, 0.885, 0.320, 1.15));
+  }
+}
+
+
+/* swing */
+.tooltipster-swing {
+  opacity: 0;
+  @include __style-prefixer('transform', rotateZ(4deg));
+  @include __style-prefixer('transition-property', 'transform', true);
+
+  &.tooltipster-show {
+    opacity: 1;
+    @include __style-prefixer('transform', rotateZ(0deg));
+    -webkit-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 1);
+    @include __style-prefixer('transition-timing-function', cubic-bezier(0.230, 0.635, 0.495, 2.4));
+  }
+}
+
+
+/* fall */
+.tooltipster-fall {
+  @include __style-prefixer('transition-property', 'top');
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  @include __style-prefixer('transition-timing-function', cubic-bezier(0.175, 0.885, 0.320, 1.15));
+
+  &.tooltipster-initial {
+    top: 0 !important;
+  }
+
+  &.tooltipster-dying {
+    @include __style-prefixer('transition-property', 'all');
+    top:     0 !important;
+    opacity: 0;
+  }
+}
+
+
+/* slide */
+.tooltipster-slide {
+  @include __style-prefixer('transition-property', 'left');
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  @include __style-prefixer('transition-timing-function', cubic-bezier(0.175, 0.885, 0.320, 1.15));
+
+  &.tooltipster-initial {
+    left: -40px !important;
+  }
+
+  &.tooltipster-dying {
+    @include __style-prefixer('transition-property', 'all');
+    left:    0 !important;
+    opacity: 0;
+  }
+}
+
+
+/* Update animations */
+
+/* We use animations rather than transitions here because transition durations may be specified in
+the style tag due to animationDuration, and we try to avoid collisions and the use of !important */
+
+/* fade */
+@keyframes tooltipster-fading {
+  0% {   opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.tooltipster-update-fade {
+  animation: tooltipster-fading 400ms;
+}
+
+
+/* rotate */
+@keyframes tooltipster-rotating {
+  25% {   transform: rotate(-2deg); }
+  75% {   transform: rotate(2deg); }
+  100% {  transform: rotate(0); }
+}
+
+.tooltipster-update-rotate {
+  animation: tooltipster-rotating 600ms;
+}
+
+
+/* scale */
+@keyframes tooltipster-scaling {
+  50% {  transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tooltipster-update-scale {
+  animation: tooltipster-scaling 600ms;
+}
+
+
+/* DEFAULT STYLE */
+.tooltipster-sidetip {
+  .tooltipster-box {
+    border-radius: 4px;
+  }
+
+  .tooltipster-content {
+    line-height: 18px;
+    padding:     6px 14px;
+  }
+
+  .tooltipster-arrow {
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .tooltipster-arrow-uncropped {
+    position: relative;
+  }
+
+  .tooltipster-arrow-background,
+  .tooltipster-arrow-border {
+    height:   0;
+    position: absolute;
+    width:    0;
+  }
+
+  .tooltipster-arrow-border {
+    left: 0;
+    top:  0;
+  }
+
+  @include tooltipster-variant(white, #565656, black);
+}

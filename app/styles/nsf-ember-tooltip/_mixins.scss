@@ -1,0 +1,87 @@
+@mixin __style-prefixer($styleName, $styleValue, $prefixValues: false) {
+  @each $prefix in ('-webkit', '-moz', '-o', '-ms') {
+    @if $prefixValues {
+      #{$prefix}-#{$styleName}: #{$prefix}-#{$styleValue};
+    }
+    @else {
+      #{$prefix}-#{$styleName}: $styleValue;
+    }
+  }
+
+  #{$styleName}: $styleValue;
+}
+
+
+@mixin tooltipster-variant($color, $bgColor, $borderColor, $borderWeight: 2px, $arrowWidth: 10px) {
+  .tooltipster-box {
+    background: $bgColor;
+    border:     $borderWeight solid $borderColor;
+  }
+
+  .tooltipster-content {
+    color: $color;
+  }
+
+  .tooltipster-arrow-border,
+  .tooltipster-arrow-background {
+    border: $arrowWidth solid transparent;
+  }
+
+  @each $side, $opp in (top: bottom, bottom: top, left: right, right: left) {
+    &.tooltipster-#{$side} {
+      .tooltipster-box {
+        margin-#{$opp}: $arrowWidth - $borderWeight;
+      }
+
+      .tooltipster-arrow-border {
+        border-#{$side}-color: $borderColor;
+      }
+
+      .tooltipster-arrow {
+        #{$opp}: 0;
+
+        @if $side == left or $side == right {
+          height:     $arrowWidth * 2;
+          margin-top: -$arrowWidth;
+          top:        0;
+          width:      $arrowWidth;
+        }
+        @else if $side == top or $side == bottom {
+          height:      $arrowWidth;
+          margin-left: -$arrowWidth;
+          width:       $arrowWidth * 2;
+        }
+      }
+
+      .tooltipster-arrow-background {
+        border-#{$side}-color: #565656;
+
+        @if $side == left {
+          left: -($borderWeight + 1);
+          top:  0px;
+        }
+        @else if $side == right {
+          left: $borderWeight + 1;
+          top:  0px;
+        }
+        @else if $side == top {
+          left: 0px;
+          top:  -($borderWeight + 1);
+        }
+        @else if $side == bottom {
+          left: 0px;
+          top:  $borderWeight + 1;
+        }
+      }
+
+      .tooltipster-arrow-uncropped {
+        @if $side == bottom {
+          top: -$arrowWidth;
+        }
+        @if $side == right {
+          left: -$arrowWidth;
+        }
+      }
+    }
+  }
+}
