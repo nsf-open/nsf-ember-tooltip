@@ -8,5 +8,5 @@ An [ember-cli](https://www.ember-cli.com) addon for using [Tooltipster](https://
 ## Installation
 (NPM support coming soon)
 ```
-npm install nsf-open/nsf-ember-tooltip#latest --save-dev
+npm install nsf-open/nsf-ember-tooltip#master --save-dev
 ```
