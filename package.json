@@ -1,24 +1,27 @@
 {
   "name": "nsf-ember-tooltip",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
-  "keywords": [
-    "ember-addon"
-  ],
+  "version": "1.0.0",
+  "description": "The power of Tooltipster in an Ember component",
   "license": "MIT",
-  "author": "",
+  "author": "National Science Foundation",
+  "repository": "https://github.com/nsf-open/nsf-ember-tooltip",
+  "keywords": [
+    "ember-addon",
+    "tooltip",
+    "tool-tip"
+  ],
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^5.1.7"
+    "ember-cli-babel": "^5.1.7",
+    "tooltipster": "^4.2.5",
+    "tooltipster-scrollabletip": "louisameline/tooltipster-scrollableTip#1.0.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -37,8 +40,6 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.6.0",
     "ember-resolver": "^2.0.3",
-    "ember-source": "~2.12.0",
-    "ember-welcome-page": "^2.0.2",
     "loader.js": "^4.2.3"
   },
   "engines": {
