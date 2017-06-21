@@ -116,8 +116,8 @@ const ToolTip = Component.extend({
       { propName: 'trackOrigin', default: false },
       { propName: 'trackTooltip', default: false },
       { propName: 'tipTrigger', pluginName: 'trigger', default: 'hover' },
-      { propName: 'triggerClose', default: null },
-      { propName: 'triggerOpen', default: null },
+      { propName: 'triggerClose', default: {} },
+      { propName: 'triggerOpen', default: {} },
       { propName: 'updateAnimation', default: null },
       { propName: 'viewportAware', default: true },
       { propName: 'zIndex', default: 9999999 }

@@ -20,7 +20,7 @@ module.exports = {
   },
 
 
-  treeForVendor(vendorTree) {
+  treeForVendor() {
     var tooltipJsTree = new Funnel(path.dirname(require.resolve('tooltipster/dist/js/tooltipster.bundle.js')), {
       files: ['tooltipster.bundle.js'],
     });
@@ -33,6 +33,6 @@ module.exports = {
       files: ['tooltipster-scrollableTip.js'],
     });
 
-    return new MergeTrees([vendorTree, tooltipJsTree, tooltipCssTree, scrollTipTree]);
+    return new MergeTrees([tooltipJsTree, tooltipCssTree, scrollTipTree]);
   },
 };
