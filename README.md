@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/nsf-open/nsf-ember-tooltip.svg?branch=master)](https://travis-ci.org/nsf-open/nsf-ember-tooltip)
 # NSF Ember Tooltip
 
-An [ember-cli](https://www.ember-cli.com) addon for using [Tooltipster](https://iamceege.github.io/tooltipster/) in Ember applications.
+An [ember-cli](https://www.ember-cli.com) addon for using [Tooltipster](https://iamceege.github.io/tooltipster/) in Ember applications. The default sideTip, and the [ScrollableTip](https://github.com/louisameline/tooltipster-scrollableTip) plugins come preconfigured.
 
 ----
 
@@ -44,10 +44,10 @@ Block form
 ```
 (Note: using `data-tooltip-content` in the component's yield block currently has one limitation: its content cannot be re-rendered. When first created, the component detaches that element from the DOM before passing it to Tooltipster. Sorry, we're working on it!)
 
-## Configuration
+## Properties
 `{{tool-tip}}` supports (almost) all of the basic options provided by Tooltipster, listed [here](https://iamceege.github.io/tooltipster/#options).
 
-NOTE: We need to deviate from Tooltipster's options in one significant place - the `trigger` option. Since `trigger` is used internally by Ember components, use `tipTrigger` instead.
+NOTE: We need to deviate from Tooltipster in one significant place - the `trigger` option. Since `trigger` is used internally by Ember components, use `tipTrigger` instead.
 
 In addition, we have added:
 
@@ -59,3 +59,38 @@ In addition, we have added:
 | showTipOnUpdate | Boolean | false | If true, changes to the `content` value will cause the tooltip to be shown.
 | tipTextAttr | String | `"[data-tooltip-content]"` | Any valid jQuery selector that will be used to search the component's block for the tooltip's content.
 
+## Styling
+The component provides the core Tooltipster styles and default theme out of the box. If you want to roll your own styles, then you can disable this in your app's `environment.js`:
+```javascript
+const ENV = {
+  'nsf-ember-tooltip': {
+    excludeDefaultStyles: true,
+  }
+};
+```
+
+If you are using SASS, the component provides and optional partial file and mixin that you may import to change things up.
+
+To import:
+```sass
+@import 'nsf-ember-tooltip/styles';
+```
+
+Available variables (with their defaults):
+```sass
+$tooltipster-color:         white;
+$tooltipster-bg:            #565656;
+$tooltipster-border:        black;
+$tooltipster-border-weight: 2px;
+$tooltipster-border-radius: 4px;
+$tooltipster-arrow-width:   10px;
+$tooltipster-padding:       6px 14px;
+$tooltipster-line-height:   18px;
+```
+
+Using the mixin to create more variants:
+```sass
+.my-custom-tooltipster-theme-name {
+  @include tooltipster-variant(color, background-color, border-color [, border-weight: 2px, arrow-width: 10px]);
+}
+```
