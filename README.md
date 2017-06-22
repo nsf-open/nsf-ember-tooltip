@@ -42,7 +42,7 @@ Block form
     </div>
 {{/tool-tip}}
 ```
-(Note: using `data-tooltip-content` in the component's yield block currently has one limitation: its content cannot be re-rendered. When first created, the component detaches that element from the DOM before passing it to Tooltipster. Sorry, we're working on it!)
+NOTE: using `data-tooltip-content` in the component's yield block currently has one limitation: its content cannot be re-rendered. When first created, the component detaches that element from the DOM before passing it to Tooltipster. Sorry, we're working on it!
 
 ## Properties
 `{{tool-tip}}` supports (almost) all of the basic options provided by Tooltipster, listed [here](https://iamceege.github.io/tooltipster/#options).
