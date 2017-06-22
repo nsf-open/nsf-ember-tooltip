@@ -69,7 +69,7 @@ const ENV = {
 };
 ```
 
-If you are using SASS, the component provides and optional partial file and mixin that you may import to change things up.
+If you are using SASS, the component provides an optional partial and mixin that you may import to change things up.
 
 To import:
 ```sass
