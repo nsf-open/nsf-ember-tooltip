@@ -50,6 +50,7 @@ Block form
 NOTE: We need to deviate from Tooltipster's options in one significant place - the `trigger` option. Since `trigger` is used internally by Ember components, use `tipTrigger` instead.
 
 In addition, we have added:
+
 | Property | Type | Default | Description
 | --- | --- | --- | --- |
 | canTab | Boolean | true | Adds `tabindex=0` to the tooltip's trigger so it will be included in the page's tab flow. If the tooltip's trigger set to `hover`, then the tooltip will be shown on focus and hidden on blur. If the trigger is `click`, then the enter key will toggle the tooltip when the element has focus.
