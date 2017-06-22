@@ -2,6 +2,14 @@
   All credit to the Tooltipster crew (https://github.com/iamceege/tooltipster).
   This is just a SASS-y version of the default theme.
 */
+$tooltipster-color:         white !default;
+$tooltipster-bg:            #565656 !default;
+$tooltipster-border:        black !default;
+$tooltipster-border-weight: 2px !default;
+$tooltipster-border-radius: 4px !default;
+$tooltipster-arrow-width:   10px !default;
+$tooltipster-padding:       6px 14px !default;
+$tooltipster-line-height:   18px !default;
 
 
 /* This is the core CSS of Tooltipster */
@@ -161,12 +169,12 @@ the style tag due to animationDuration, and we try to avoid collisions and the u
 /* DEFAULT STYLE */
 .tooltipster-sidetip {
   .tooltipster-box {
-    border-radius: 4px;
+    border-radius: $tooltipster-border-radius;
   }
 
   .tooltipster-content {
-    line-height: 18px;
-    padding:     6px 14px;
+    line-height: $tooltipster-line-height;
+    padding:     $tooltipster-padding;
   }
 
   .tooltipster-arrow {
@@ -190,5 +198,5 @@ the style tag due to animationDuration, and we try to avoid collisions and the u
     top:  0;
   }
 
-  @include tooltipster-variant(white, #565656, black);
+  @include tooltipster-variant($tooltipster-color, $tooltipster-bg, $tooltipster-border, $tooltipster-border-weight, $tooltipster-arrow-width);
 }
