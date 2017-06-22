@@ -54,7 +54,7 @@
       }
 
       .tooltipster-arrow-background {
-        border-#{$side}-color: #565656;
+        border-#{$side}-color: $bgColor;
 
         @if $side == left {
           left: -($borderWeight + 1);
