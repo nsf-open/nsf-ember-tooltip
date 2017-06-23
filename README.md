@@ -16,25 +16,25 @@ It's pretty simple. You provide the tooltip content, and the trigger content. Th
 
 Inline form
 ```handlebars
-{{-- Using positional parameters --}}
+{{! Using positional parameters }}
 {{tool-tip 'Here is some more information' 'I have a tooltip'}}
 
-{{-- Equivalent with named parameters --}}
+{{! Equivalent with named parameters }}
 {{tool-tip content='Here is some more information' text='I have a tooltip'}}
 
-{{-- The title attribute may also be used to provide the tip's content --}}
+{{! The title attribute may also be used to provide the tip's content }}
 {{tool-tip title='Here is some more information' text='I have a tooltip'}}
 ```
 
 Block form
 ```handlebars
-{{-- The component's yield block becomes the trigger --}}
+{{! The component's yield block becomes the trigger }}
 {{#tool-tip 'Here is some more information'}}
     I have a tooltip
 {{/tool-tip}}
 
-{{-- For complex content that you do not want to create programmatically --}}
-{{-- you can also define the tooltip content in the block --}}
+{{! For complex content that you do not want to create programmatically }}
+{{! you can also define the tooltip content in the block }}
 {{#tool-tip}}
     I have a tooltip
     <div data-tooltip-content>
